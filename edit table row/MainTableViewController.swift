@@ -10,16 +10,19 @@ import UIKit
 
 class MainTableViewController: UITableViewController {
 
-    var listingData = ["9705 W Ownby, Spokane, WA", "26 Executive Cir, Irvine, CA", "3115 W Hoffman, Spokane", "24 Main St, Newport Beach, CA", "4 Park Plaza, Irvine, CA"]
+    var listingDictionary = ["location" : ["9705 W Ownby, Spokane, WA", "26 Executive Cir, Irvine, CA", "3115 W Hoffman, Spokane", "24 Main St, Newport Beach, CA", "4 Park Plaza, Irvine, CA"], "price" : ["$400k","$500k","$300k","$650k","$450k"]]
     
     @IBAction func saveToMainViewController (segue: UIStoryboardSegue) {
-        let detailViewController = segue.source as! DetailTableViewController
+        let detailVC = segue.source as! DetailTableViewController
         
-        let index = detailViewController.index
+        let index = detailVC.index
         
-        let listingString = detailViewController.editedListing
+        let locationString = detailVC.editedLocation
         
-        listingData[index!] = listingString!
+        let priceString = detailVC.editedPrice
+        
+        listingDictionary["location"]![index!] = locationString!
+        listingDictionary["price"]![index!] = priceString!
         
         tableView.reloadData()
         
@@ -34,6 +37,8 @@ class MainTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        print(listingDictionary["location"]!)
+        print(listingDictionary["price"]!)
         
     }
     
@@ -48,14 +53,14 @@ class MainTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return listingData.count
+        return listingDictionary["location"]!.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
 
-        cell.textLabel?.text = listingData[indexPath.row]
+        cell.textLabel?.text = listingDictionary["location"]![indexPath.row]
 
         return cell
     }
@@ -106,10 +111,11 @@ class MainTableViewController: UITableViewController {
         if segue.identifier == "edit" {
             let path = tableView.indexPathForSelectedRow
             
-            let detailViewController = segue.destination as! DetailTableViewController
+            let detailVC = segue.destination as! DetailTableViewController
             
-            detailViewController.index = path?.row
-            detailViewController.listingArray = listingData
+            detailVC.index = path?.row
+            detailVC.locationArray = listingDictionary["location"]
+            detailVC.priceArray = listingDictionary["price"]
             
         }
         

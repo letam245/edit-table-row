@@ -10,13 +10,18 @@ import UIKit
 
 class DetailTableViewController: UITableViewController {
 
-    @IBOutlet weak var editListingTextField: UITextField!
+    @IBOutlet weak var editLocationTextField: UITextField!
+    @IBOutlet weak var editPriceTextField: UITextField!
     
     var index: Int?
     
-    var listingArray : [String]!
+    var locationArray : [String]!
     
-    var editedListing : String?
+    var editedLocation : String?
+    
+    var priceArray : [String]!
+    
+    var editedPrice: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +32,18 @@ class DetailTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        editListingTextField.text = listingArray[index!]
+        editLocationTextField.text = locationArray[index!]
+        editPriceTextField.text = priceArray[index!]
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 && indexPath.row == 0 {
-            editListingTextField.becomeFirstResponder()
-        }
+//        if indexPath.section == 0 && indexPath.row == 0 {
+//            editLocationTextField.becomeFirstResponder()
+//        }
+//        else if indexPath.section == 1 &&  indexPath.row == 0 {
+//                
+//            editPriceTextField.becomeFirstResponder()
+//        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -107,7 +117,8 @@ class DetailTableViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "save" {
-            editedListing = editListingTextField.text
+            editedLocation = editLocationTextField.text
+            editedPrice = editPriceTextField.text
         }
     }
  
