@@ -20,6 +20,7 @@ class MainTableViewController: UITableViewController {
         let listingString = detailViewController.editedListing
         
         listingData[index!] = listingString!
+        
         tableView.reloadData()
         
     }
