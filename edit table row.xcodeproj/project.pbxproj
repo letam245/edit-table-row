@@ -13,6 +13,7 @@
 		B36C09FE216D57400084A3EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B36C09FC216D57400084A3EC /* LaunchScreen.storyboard */; };
 		B36C0A06216D58DD0084A3EC /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C0A05216D58DD0084A3EC /* MainTableViewController.swift */; };
 		B36C0A08216D67CA0084A3EC /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C0A07216D67CA0084A3EC /* DetailTableViewController.swift */; };
+		B36C0A11216E8E540084A3EC /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C0A10216E8E540084A3EC /* Listing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		B36C09FF216D57400084A3EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B36C0A05216D58DD0084A3EC /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		B36C0A07216D67CA0084A3EC /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		B36C0A10216E8E540084A3EC /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +42,10 @@
 		B36C09E7216D573F0084A3EC = {
 			isa = PBXGroup;
 			children = (
-				B36C09F2216D573F0084A3EC /* edit table row */,
+				B36C0A0F216E8E370084A3EC /* Model */,
+				B36C0A09216E839B0084A3EC /* Controller */,
+				B36C09F2216D573F0084A3EC /* View */,
+				B36C0A0C216E83F70084A3EC /* Supporting Files */,
 				B36C09F1216D573F0084A3EC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,18 +58,40 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B36C09F2216D573F0084A3EC /* edit table row */ = {
+		B36C09F2216D573F0084A3EC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B36C09F7216D573F0084A3EC /* Main.storyboard */,
+				B36C09FA216D57400084A3EC /* Assets.xcassets */,
+				B36C09FC216D57400084A3EC /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B36C0A09216E839B0084A3EC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				B36C09F3216D573F0084A3EC /* AppDelegate.swift */,
 				B36C0A05216D58DD0084A3EC /* MainTableViewController.swift */,
-				B36C09F7216D573F0084A3EC /* Main.storyboard */,
 				B36C0A07216D67CA0084A3EC /* DetailTableViewController.swift */,
-				B36C09FA216D57400084A3EC /* Assets.xcassets */,
-				B36C09FC216D57400084A3EC /* LaunchScreen.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B36C0A0C216E83F70084A3EC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				B36C09FF216D57400084A3EC /* Info.plist */,
 			);
-			path = "edit table row";
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B36C0A0F216E8E370084A3EC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B36C0A10216E8E540084A3EC /* Listing.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +167,7 @@
 			files = (
 				B36C0A08216D67CA0084A3EC /* DetailTableViewController.swift in Sources */,
 				B36C0A06216D58DD0084A3EC /* MainTableViewController.swift in Sources */,
+				B36C0A11216E8E540084A3EC /* Listing.swift in Sources */,
 				B36C09F4216D573F0084A3EC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,7 +316,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X5C9UMWMU5;
-				INFOPLIST_FILE = "edit table row/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,7 +334,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X5C9UMWMU5;
-				INFOPLIST_FILE = "edit table row/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,5 +1,5 @@
 //
-//  MainTableViewController.swift
+//  DetailTableViewController.swift
 //  edit table row
 //
 //  Created by Tammy Le on 10/9/18.
@@ -8,25 +8,39 @@
 
 import UIKit
 
-class MainTableViewController: UITableViewController {
+class DetailTableViewController: UITableViewController {
 
-    var listingDictionary = ["location" : ["9705 W Ownby, Spokane, WA", "26 Executive Cir, Irvine, CA", "3115 W Hoffman, Spokane", "24 Main St, Newport Beach, CA", "4 Park Plaza, Irvine, CA"], "price" : ["$400k","$500k","$300k","$650k","$450k"]]
+    @IBOutlet weak var editLocationTextField: UITextField!
+    @IBOutlet weak var editPriceTextField: UITextField!
+    @IBOutlet weak var editedClosePrice: UITextField!
+    @IBOutlet weak var mlsID: UITextField!
+    @IBOutlet weak var grossIncome: UITextField!
+    @IBOutlet weak var listDate: UITextField!
+    @IBOutlet weak var closeDate: UITextField!
     
-    @IBAction func saveToMainViewController (segue: UIStoryboardSegue) {
-        let detailVC = segue.source as! DetailTableViewController
-        
-        let index = detailVC.index
-        
-        let locationString = detailVC.editedLocation
-        
-        let priceString = detailVC.editedPrice
-        
-        listingDictionary["location"]![index!] = locationString!
-        listingDictionary["price"]![index!] = priceString!
-        
-        tableView.reloadData()
-        
-    }
+    var index: Int?
+    
+    var locationArray : [String]!
+    var editedLocation : String?
+    
+    var priceArray : [String]!
+    var editedPrice: String?
+    
+    var closePriceArray : [String]!
+    var editedCloseprice: String?
+    
+    var mlsArray : [Int]!
+    var editedMLS: Int?
+    
+    var grossIncomeArray : [String]!
+    var editedGrossIncome: String?
+    
+    var listDateArray : [String]!
+    var editedListDate: String?
+    
+    var closeDateArray : [String]!
+    var editedcloseDate: String?
+    
     
     
     override func viewDidLoad() {
@@ -37,34 +51,53 @@ class MainTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        print(listingDictionary["location"]!)
-        print(listingDictionary["price"]!)
         
+        editLocationTextField.text = locationArray[index!]
+        editPriceTextField.text = priceArray[index!]
+        editedClosePrice.text = closePriceArray[index!]
+        mlsID.text = "\(mlsArray![index!])"
+        grossIncome.text = grossIncomeArray[index!]
+        listDate.text = listDateArray[index!]
+        closeDate.text = closeDateArray[index!]
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if indexPath.section == 0 && indexPath.row == 0 {
+//            editLocationTextField.becomeFirstResponder()
+//        }
+//        else if indexPath.section == 1 &&  indexPath.row == 0 {
+//
+//            editPriceTextField.becomeFirstResponder()
+//        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
-
+    
+    
+    /*
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return listingDictionary["location"]!.count
+        return 0
     }
+    */
 
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        cell.textLabel?.text = listingDictionary["location"]![indexPath.row]
+        // Configure the cell...
 
         return cell
     }
-    
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -108,18 +141,16 @@ class MainTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "edit" {
-            let path = tableView.indexPathForSelectedRow
-            
-            let detailVC = segue.destination as! DetailTableViewController
-            
-            detailVC.index = path?.row
-            detailVC.locationArray = listingDictionary["location"]
-            detailVC.priceArray = listingDictionary["price"]
-            
+        if segue.identifier == "save" {
+            editedLocation = editLocationTextField.text
+            editedPrice = editPriceTextField.text
+            editedCloseprice = editedClosePrice.text
+            editedMLS = Int(mlsID.text!)
+            editedGrossIncome = grossIncome.text
+            editedListDate = listDate.text
+            editedcloseDate = closeDate.text
         }
-        
     }
-    
+ 
 
 }
