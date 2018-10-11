@@ -17,28 +17,29 @@ class DetailTableViewController: UITableViewController {
     @IBOutlet weak var grossIncome: UITextField!
     @IBOutlet weak var listDate: UITextField!
     @IBOutlet weak var closeDate: UITextField!
+
     
     var index: Int?
     
-    var locationArray : [String]!
+    var location : String?
     var editedLocation : String?
     
-    var priceArray : [String]!
+    var listPrice: String?
     var editedPrice: String?
     
-    var closePriceArray : [String]!
+    var closePrice : String?
     var editedCloseprice: String?
     
-    var mlsArray : [Int]!
+    var mls : Int?
     var editedMLS: Int?
     
-    var grossIncomeArray : [String]!
+    var grossincome : String?
     var editedGrossIncome: String?
     
-    var listDateArray : [String]!
+    var listdate : String?
     var editedListDate: String?
     
-    var closeDateArray : [String]!
+    var closedate : String?
     var editedcloseDate: String?
     
     
@@ -52,13 +53,19 @@ class DetailTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        editLocationTextField.text = locationArray[index!]
-        editPriceTextField.text = priceArray[index!]
-        editedClosePrice.text = closePriceArray[index!]
-        mlsID.text = "\(mlsArray![index!])"
-        grossIncome.text = grossIncomeArray[index!]
-        listDate.text = listDateArray[index!]
-        closeDate.text = closeDateArray[index!]
+        editLocationTextField.text = location
+        editPriceTextField.text = "\(listPrice!)"
+        editedClosePrice.text = closePrice
+        mlsID.text = "\(mls!)"
+        grossIncome.text = grossincome
+        listDate.text = listdate
+        closeDate.text = closedate
+        
+        print("=== \(editLocationTextField.text!) ===")
+        
+        tableView.register(UINib(nibName: "PriceSliderTableViewCell", bundle: nil), forCellReuseIdentifier: "customPriceSliderCell")
+        
+        tableView.register(UINib(nibName: "CustomLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "customLabelCell")
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -91,13 +98,28 @@ class DetailTableViewController: UITableViewController {
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        if indexPath.section == 1 {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customPriceSliderCell", for: indexPath) as! PriceSliderTableViewCell
 
         // Configure the cell...
+       
+            cell.valueLabel.text = "\(listPrice!)"
+            cell.slider.value = Float(listPrice!)
 
-        return cell
+            return cell
+        }
+        else if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "customLabelCell", for: indexPath) as! CustomLabelTableViewCell
+            
+            //cell.customTextField.text = location
+            cell.customTextField.text = editLocationTextField.text!
+            return cell
+           
+        }
+        return UITableViewCell()
     }
-    */
+ */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -150,6 +172,7 @@ class DetailTableViewController: UITableViewController {
             editedListDate = listDate.text
             editedcloseDate = closeDate.text
         }
+       
     }
  
 

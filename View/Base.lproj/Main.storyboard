@@ -210,13 +210,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="closeDate" destination="fat-tr-a0W" id="HqD-mL-mg9"/>
+                        <outlet property="closeDate" destination="fat-tr-a0W" id="EML-l9-NdH"/>
                         <outlet property="editLocationTextField" destination="JuB-lO-nwv" id="Mwt-hM-qPN"/>
                         <outlet property="editPriceTextField" destination="aeO-es-BFI" id="53q-FY-a74"/>
                         <outlet property="editedClosePrice" destination="Upk-V5-Hzn" id="c4S-ob-lB1"/>
-                        <outlet property="grossIncome" destination="at5-ff-7cs" id="H9D-ho-0yJ"/>
-                        <outlet property="listDate" destination="6ml-c7-X0u" id="4g2-QI-egG"/>
-                        <outlet property="mlsID" destination="MzN-dM-kdS" id="p1C-Aj-mgj"/>
+                        <outlet property="grossIncome" destination="at5-ff-7cs" id="IZ0-KT-bLh"/>
+                        <outlet property="listDate" destination="6ml-c7-X0u" id="5Kb-e5-xur"/>
+                        <outlet property="mlsID" destination="MzN-dM-kdS" id="q7C-3v-IIk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wXS-Ha-j53" userLabel="First Responder" sceneMemberID="firstResponder"/>

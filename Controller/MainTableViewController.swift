@@ -9,60 +9,105 @@
 import UIKit
 
 class MainTableViewController: UITableViewController {
-
-    var listingDictionary = [
-        "location" : [
-            "9705 W Ownby, Spokane, WA",
-            "26 Executive Cir, Irvine, CA",
-            "3115 W Hoffman, Spokane, WA",
-            "24 Main St, Newport Beach, CA",
-            "4 Park Plaza, Irvine, CA"
-        ],
-        "listPrice" : [
-            "$400k",
-            "$500k",
-            "$300k",
-            "$650k",
-            "$450k"
-        ],
-        "closePrice" : [
-            "$300k",
-            "$550k",
-            "$300k",
-            "$650k",
-            "$400k"
-        ],
-        "mls" : [
-            201718549,
-            130341854,
-            440171854,
-            500171855,
-            340177758,
-        ],
-        "grossIncome" : [
-            "$235",
-            "$450",
-            "$675",
-            "$200",
-            "$600",
-        ],
-        "listDate" : [
-            "01/02/2018",
-            "02/05/2018",
-            "02/05/2017",
-            "02/10/2017",
-            "02/05/2018"
-        ],
-        "closeDate" : [
-            "03/24/2011",
-            "02/20/2011",
-            "03/20/2017",
-            "03/20/2016",
-            "03/20/2017",
-        ]
+   
+    var listingData : [Listing] = [
+        Listing (
+            location: "9705 W Ownby, Spokane, WA",
+            listPrice: "$400k",
+            mls: 201718549,
+            grossIncome: "$235k",
+            listDate: "01/02/2018",
+            closeDate: "03/24/2011",
+            closePrice: "$150k"
+        ),
+        
+        Listing (
+            location: "26 Executive Cir, Irvine, CA",
+            listPrice: "$500k",
+            mls: 130318549,
+            grossIncome: "$450k",
+            listDate: "02/05/2018",
+            closeDate: "03/20/2011",
+            closePrice: "$150k"
+        ),
+        Listing (
+            location: "3115 W Hoffman, Spokane, WA",
+            listPrice: "$450k",
+            mls: 440178544,
+            grossIncome: "$450k",
+            listDate: "02/05/2017",
+            closeDate: "03/20/2017",
+            closePrice: "$550k"
+        ),
+        Listing (
+            location: "24 Main St, Newport Beach, CA",
+            listPrice: "$600k",
+            mls: 500171850,
+            grossIncome: "$550k",
+            listDate: "02/10/2017",
+            closeDate: "03/20/2016",
+            closePrice: "$350k"
+        ),
+        Listing (
+            location: "4 Park Plaza, Irvine, CA",
+            listPrice: "$590k",
+            mls: 340177759,
+            grossIncome: "$730k",
+            listDate: "02/05/2018",
+            closeDate: "03/20/2017",
+            closePrice: "$600k"
+        )
     ]
     
-    var listingNumber : Int = 0
+    var pendingListingData : [Listing] = [
+        Listing (
+            location: "9705 W Ownby, Ohio, OH",
+            listPrice: "$400k",
+            mls: 201718549,
+            grossIncome: "$235k",
+            listDate: "01/02/2018",
+            closeDate: "03/24/2011",
+            closePrice: "$150k"
+        ),
+        
+        Listing (
+            location: "55 Executive Cir, Garden Grove, CA",
+            listPrice: "$500k",
+            mls: 130318549,
+            grossIncome: "$450k",
+            listDate: "02/05/2018",
+            closeDate: "03/20/2011",
+            closePrice: "$150k"
+        ),
+        Listing (
+            location: "3115 W Hoffman, Spokane, WA",
+            listPrice: "$450k",
+            mls: 440178544,
+            grossIncome: "$450k",
+            listDate: "02/05/2017",
+            closeDate: "03/20/2017",
+            closePrice: "$550k"
+        ),
+        Listing (
+            location: "24 Main St, Newport Beach, CA",
+            listPrice: "$600k",
+            mls: 500171850,
+            grossIncome: "$550k",
+            listDate: "02/10/2017",
+            closeDate: "03/20/2016",
+            closePrice: "$350k"
+        ),
+        Listing (
+            location: "4 Park Plaza, Irvine, CA",
+            listPrice: "$590k",
+            mls: 340177759,
+            grossIncome: "$730k",
+            listDate: "02/05/2018",
+            closeDate: "03/20/2017",
+            closePrice: "$600k"
+        )
+    ]
+    
     
     @IBAction func saveToMainViewController (segue: UIStoryboardSegue) {
         let detailVC = segue.source as! DetailTableViewController
@@ -77,14 +122,15 @@ class MainTableViewController: UITableViewController {
         let editedListDate = detailVC.editedListDate
         let editedcloseDate = detailVC.editedcloseDate
         
-        listingDictionary["location"]![index!] = editLocation!
-        listingDictionary["listPrice"]![index!] = editPrice!
-        listingDictionary["closePrice"]![index!] = editClosePrice!
-        listingDictionary["mls"]![index!] = editMLS!
-        listingDictionary["grossIncome"]![index!] = editedGrossIncome!
-        listingDictionary["listDate"]![index!] = editedListDate!
-        listingDictionary["closeDate"]![index!] = editedcloseDate!
 
+        listingData[index!].location = editLocation!
+        listingData[index!].listPrice = editPrice!
+        listingData[index!].closePrice = editClosePrice!
+        listingData[index!].mls = editMLS!
+        listingData[index!].grossIncome = editedGrossIncome!
+        listingData[index!].listDate = editedListDate!
+        listingData[index!].closeDate = editedcloseDate!
+        
         tableView.reloadData()
         
     }
@@ -112,15 +158,16 @@ class MainTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return listingDictionary["location"]!.count
+        return listingData.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
 
-        cell.textLabel?.text = listingDictionary["location"]![indexPath.row] as? String
-       
+        //cell.textLabel?.text = listingDictionary["location"]![indexPath.row] as? String
+    
+        cell.textLabel?.text = listingData[indexPath.row].location
 
         return cell
     }
@@ -161,7 +208,6 @@ class MainTableViewController: UITableViewController {
     }
     */
 
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -173,14 +219,15 @@ class MainTableViewController: UITableViewController {
             
             let detailVC = segue.destination as! DetailTableViewController
             
+            
             detailVC.index = path?.row
-            detailVC.locationArray = (listingDictionary["location"] as! [String])
-            detailVC.priceArray = (listingDictionary["listPrice"] as! [String])
-            detailVC.closePriceArray = (listingDictionary["closePrice"] as! [String])
-            detailVC.mlsArray = (listingDictionary["mls"] as! [Int])
-            detailVC.grossIncomeArray = (listingDictionary["grossIncome"] as! [String])
-            detailVC.listDateArray = (listingDictionary["listDate"] as! [String])
-            detailVC.closeDateArray = (listingDictionary["closeDate"] as! [String])
+            detailVC.location = listingData[(path?.row)!].location
+            detailVC.listPrice = listingData[(path?.row)!].listPrice
+            detailVC.closePrice = listingData[(path?.row)!].closePrice
+            detailVC.mls = listingData[(path?.row)!].mls
+            detailVC.grossincome = listingData[(path?.row)!].grossIncome
+            detailVC.listdate = listingData[(path?.row)!].listDate
+            detailVC.closedate = listingData[(path?.row)!].closeDate
             
         }
         

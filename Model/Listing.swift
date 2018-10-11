@@ -11,16 +11,16 @@ import Foundation
 class Listing {
     
     var location : String = ""
-    var price : Int = 0
-    var mls :Int = 0
-    var grossIncome : Int = 0
+    var listPrice : String = ""
+    var mls : Int = 0
+    var grossIncome : String = ""
     var listDate : String = ""
     var closeDate : String = ""
-    var closePrice : Int = 0
+    var closePrice : String = ""
     
-    init(location : String, price : Int, mls : Int, grossIncome: Int, listDate: String, closeDate: String, closePrice: Int) {
+    init(location : String, listPrice : String, mls : Int, grossIncome: String, listDate: String, closeDate: String, closePrice: String) {
         self.location = location
-        self.price = price
+        self.listPrice = listPrice
         self.mls = mls
         self.grossIncome = grossIncome
         self.listDate = listDate
