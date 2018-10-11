@@ -18,6 +18,7 @@
 		B36C0A1C216F5BC60084A3EC /* PriceSliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C0A1A216F5BC60084A3EC /* PriceSliderTableViewCell.swift */; };
 		B36C0A20216F6B0B0084A3EC /* CustomLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C0A1E216F6B0B0084A3EC /* CustomLabelTableViewCell.swift */; };
 		B36C0A21216F6B0B0084A3EC /* CustomLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B36C0A1F216F6B0B0084A3EC /* CustomLabelTableViewCell.xib */; };
+		B36C0A27216FAC780084A3EC /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C0A26216FAC780084A3EC /* FirstViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B36C0A1A216F5BC60084A3EC /* PriceSliderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceSliderTableViewCell.swift; sourceTree = "<group>"; };
 		B36C0A1E216F6B0B0084A3EC /* CustomLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabelTableViewCell.swift; sourceTree = "<group>"; };
 		B36C0A1F216F6B0B0084A3EC /* CustomLabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomLabelTableViewCell.xib; sourceTree = "<group>"; };
+		B36C0A26216FAC780084A3EC /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				B36C09F3216D573F0084A3EC /* AppDelegate.swift */,
 				B36C0A05216D58DD0084A3EC /* MainTableViewController.swift */,
 				B36C0A07216D67CA0084A3EC /* DetailTableViewController.swift */,
+				B36C0A26216FAC780084A3EC /* FirstViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			files = (
 				B36C0A08216D67CA0084A3EC /* DetailTableViewController.swift in Sources */,
 				B36C0A06216D58DD0084A3EC /* MainTableViewController.swift in Sources */,
+				B36C0A27216FAC780084A3EC /* FirstViewController.swift in Sources */,
 				B36C0A1C216F5BC60084A3EC /* PriceSliderTableViewCell.swift in Sources */,
 				B36C0A11216E8E540084A3EC /* Listing.swift in Sources */,
 				B36C09F4216D573F0084A3EC /* AppDelegate.swift in Sources */,

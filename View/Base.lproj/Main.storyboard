@@ -1,18 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OEF-hJ-5vM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cLc-Xa-oKx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--First View Controller-->
+        <scene sceneID="e4H-ei-vMr">
+            <objects>
+                <viewController id="bJK-kj-Nha" customClass="FirstViewController" customModule="edit_table_row" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xRa-zu-7oE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pij-1O-AMs">
+                                <rect key="frame" x="0.0" y="64" width="375" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Active"/>
+                                    <segment title="Pending"/>
+                                    <segment title="Closed"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentSwitch:" destination="bJK-kj-Nha" eventType="valueChanged" id="oMl-Ka-qqE"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="IB4-ZU-mBA"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="MU9-2X-L7K"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="pij-1O-AMs" id="lYr-FX-7Jf"/>
+                        <segue destination="9Ch-Im-UuP" kind="push" identifier="edit" id="nKv-76-bsw"/>
+                        <segue destination="tIZ-B0-GGt" kind="unwind" unwindAction="unwindToMainViewControllerWithSegue:" id="4Bk-im-O5R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="II7-l9-Yvy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2508" y="-737.18140929535241"/>
+        </scene>
         <!--Listing Transaction-->
         <scene sceneID="EzK-zC-75f">
             <objects>
-                <tableViewController id="9Ch-Im-UuP" userLabel="Listing Transaction" customClass="MainTableViewController" customModule="edit_table_row" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8PA-jO-MCV">
+                <tableViewController storyboardIdentifier="activeTable" id="9Ch-Im-UuP" userLabel="Listing Transaction" customClass="MainTableViewController" customModule="edit_table_row" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="activeTable" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8PA-jO-MCV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -35,8 +71,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Active Listings" id="MBK-8i-PQ5"/>
+                    <connections>
+                        <outlet property="view" destination="8PA-jO-MCV" id="bzz-Xw-DPb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETd-AT-Bke" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="tIZ-B0-GGt" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1568.8" y="133.5832083958021"/>
         </scene>
@@ -225,22 +265,22 @@
             <point key="canvasLocation" x="2416.8000000000002" y="133.5832083958021"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="XrT-3D-33S">
+        <scene sceneID="6Bm-Za-LJU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OEF-hJ-5vM" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cLc-Xa-oKx" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gkQ-Fw-fPd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PMd-vR-SQR">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="9Ch-Im-UuP" kind="relationship" relationship="rootViewController" id="sJx-Ir-gTB"/>
+                        <segue destination="bJK-kj-Nha" kind="relationship" relationship="rootViewController" id="qUl-jl-d6q"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Tq-xB-BCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Czg-jl-VhR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="629.60000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1568.8" y="-737.18140929535241"/>
         </scene>
     </scenes>
 </document>
